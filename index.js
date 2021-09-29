@@ -19,6 +19,7 @@ try {
         newGradle = data;
         if (versionCode.length > 0) {
             newGradle = newGradle.replace(versionCodeRegexPattern, `$1${versionCode}`);
+            console.log(`Set new versionCode : ${newVersionCode}`);
         } else {
             const lastVersionCodeStr = newGradle.match(versionCodeRegexPattern)[2];
             console.log(`Current versionCode : ${lastVersionCodeStr}`);
