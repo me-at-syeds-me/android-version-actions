@@ -17,6 +17,7 @@ try {
 
     fs.readFile(gradlePath, 'utf8', function (err, data) {
         newGradle = data;
+        console.log(`Start reading file`);
         if (versionCode.length > 0) {
             newGradle = newGradle.replace(versionCodeRegexPattern, `$1${versionCode}`);
             console.log(`Set new versionCode : ${newVersionCode}`);
