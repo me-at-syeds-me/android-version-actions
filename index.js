@@ -19,12 +19,12 @@ try {
         newGradle = data;
         if (versionCode.length > 0) {
             newGradle = newGradle.replace(versionCodeRegexPattern, `$1${versionCode}`);
-            core.setOutput("New_VersionCode", versionCode);
         } else {
             const lastVersionCodeStr = newGradle.match(versionCodeRegexPattern)[2];
+            console.log(`Current versionCode : ${lastVersionCodeStr}`);
             const newVersionCode = parseInt(lastVersionCodeStr) + 1;
             newGradle = newGradle.replace(versionCodeRegexPattern, `$1${newVersionCode}`);
-            core.setOutput("New_VersionCode", newVersionCode);
+            console.log(`New versionCode : ${newVersionCode}`);
         }
         if (versionName.length > 0)
             newGradle = newGradle.replace(versionNameRegexPattern, `$1\"${versionName}\"`);
