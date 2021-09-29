@@ -11,13 +11,12 @@ try {
     const gradlePath = core.getInput('gradlePath');
     const versionCode = core.getInput('versionCode');
     const versionName = core.getInput('versionName');
-    console.log(`Passed Gradle Path : ${gradlePath}`);
+    console.log(`Gradle Path : ${gradlePath}`);
     console.log(`Version Code : ${versionCode}`);
     console.log(`Version Name : ${versionName}`);
 
     fs.readFile(gradlePath, 'utf8', function (err, data) {
         newGradle = data;
-        console.log(`Start reading file`);
         if (versionCode.length > 0) {
             newGradle = newGradle.replace(versionCodeRegexPattern, `$1${versionCode}`);
             console.log(`Set new versionCode : ${newVersionCode}`);
