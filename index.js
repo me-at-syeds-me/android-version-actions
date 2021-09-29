@@ -17,8 +17,15 @@ try {
 
     fs.readFile(gradlePath, 'utf8', function (err, data) {
         newGradle = data;
-        if (versionCode.length > 0)
+        if (versionCode.length > 0) {
             newGradle = newGradle.replace(versionCodeRegexPattern, `$1${versionCode}`);
+            core.setOutput("New_VersionCode", versionCode);
+        } else {
+            const lastVersionCodeStr = newGradle.match(versionCodeRegexPattern)[2];
+            const newVersionCode = parseInt(lastVersionCodeStr) + 1;
+            newGradle = newGradle.replace(versionCodeRegexPattern, `$1${newVersionCode}`);
+            core.setOutput("New_VersionCode", newVersionCode);
+        }
         if (versionName.length > 0)
             newGradle = newGradle.replace(versionNameRegexPattern, `$1\"${versionName}\"`);
         fs.writeFile(gradlePath, newGradle, function (err) {
