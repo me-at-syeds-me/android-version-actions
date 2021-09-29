@@ -11,7 +11,7 @@ try {
     const gradlePath = core.getInput('gradlePath');
     const versionCode = core.getInput('versionCode');
     const versionName = core.getInput('versionName');
-    console.log(`Gradle Path : ${gradlePath}`);
+    console.log(`Passed Gradle Path : ${gradlePath}`);
     console.log(`Version Code : ${versionCode}`);
     console.log(`Version Name : ${versionName}`);
 
